@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+Auth::loginUsingId(1);
+
 /*
 |--------------------------------------------------------------------------
 | API Routes

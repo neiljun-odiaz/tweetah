@@ -1,5 +1,7 @@
 <?php
 
+Auth::loginUsingId(1);
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +13,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TweetController@index');
 
 Route::resource('tweet','TweetController');
