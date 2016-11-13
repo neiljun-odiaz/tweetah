@@ -14,5 +14,3 @@ Auth::loginUsingId(1);
 */
 
 Route::get('/', 'TweetController@index');
-
-Route::resource('tweet','TweetController');

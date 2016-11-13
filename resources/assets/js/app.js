@@ -1,5 +1,8 @@
 import Vue from 'vue';
-// require('./bootstrap');
+// import VueResource from 'vue-resource';
+require('./bootstrap');
+
+// const tweets = Vue.
 
 new Vue({
     el: '#app',

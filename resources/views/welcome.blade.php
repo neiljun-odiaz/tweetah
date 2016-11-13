@@ -19,8 +19,11 @@
     <ul>
         @foreach( $tweets as $tweet )
         <li>
-            {{ $tweet->tweet }} - {{ $tweet->user->name }}                
-            <a href="/tweet/{{ $tweet->id }}/edit">Edit</a>
+            {{ $tweet->tweet }} - {{ $tweet->user->name }} 
+            {{ Auth::id() }} 
+            @if ( Auth::id() == $tweet->user->id )
+            <a href="/tweet/{{ $tweet->id }}/edit">Edit</a> | <a href="/tweet/{{ $tweet->id }}/delete">Edit</a>
+            @endif
         </li>
         @endforeach
     </ul>
