@@ -21,8 +21,6 @@ install:
 - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-lowest --prefer-stable; fi
 
 before_script:
-- php artisan key:generate
-- php artisan config:clear
 - php artisan serve >/dev/null 2>&1 &
 
 script:
