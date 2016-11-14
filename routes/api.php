@@ -19,4 +19,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
+Route::get('/tweet/{tweet}/delete', 'TweetController@destory');
+
 Route::resource('tweet','TweetController');

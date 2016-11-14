@@ -13,4 +13,4 @@ Auth::loginUsingId(1);
 |
 */
 
-Route::get('/', 'TweetController@index');
+Route::get('/', 'TweetController@welcome');

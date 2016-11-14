@@ -1,12 +1,18 @@
 import Vue from 'vue';
 // import VueResource from 'vue-resource';
+
+import TweetList from './components/Tweet/TweetList.vue';
+import TweetAddForm from './components/Tweet/TweetAdd.vue';
+
 require('./bootstrap');
 
-// const tweets = Vue.
+Vue.component('tweet-list', TweetList);
+Vue.component('new-tweet-form', TweetAddForm);
 
 new Vue({
     el: '#app',
     data: {
-        hello: 'World!'
+        tweets: [],
+        newTweet: {}
     }
 });

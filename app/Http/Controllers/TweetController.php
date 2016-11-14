@@ -11,9 +11,14 @@ use App\Tweet;
 class TweetController extends Controller
 {
 
-    public function index() {
+    public function welcome() {
         $tweets = Tweet::all();
         return view('welcome', compact('tweets'));
+    }
+
+    public function index() {
+        $tweets = Tweet::with('user')->get();
+        return $tweets;
     }
 
     public function show(Tweet $tweet){
@@ -34,15 +39,20 @@ class TweetController extends Controller
         // Save to our databse
         $tweet = new Tweet;
         $tweet->user_id = $id;
-        $tweet->tweet = $request->input('tweet');
+        $tweet->message = $request->input('message');
         $tweet->save();
 
-        return response($tweet, 201);
-
+        // return response($tweet, 201);
+        return back();
     }
 
     public function edit(Tweet $tweet) {
         return view('tweet.edit', compact('tweet'));
+    }
+
+    public function destory(Tweet $tweet) {
+        $tweet->delete();
+        return back();
     }
 
 }
