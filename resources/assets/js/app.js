@@ -3,6 +3,7 @@ import Vue from 'vue';
 
 import TweetList from './components/Tweet/TweetList.vue';
 import TweetAddForm from './components/Tweet/TweetAdd.vue';
+import Child from './components/Example.vue';
 
 require('./bootstrap');
 
@@ -13,6 +14,7 @@ new Vue({
     el: '#app',
     data: {
         tweets: [],
+
         newTweet: {}
     }
 });
