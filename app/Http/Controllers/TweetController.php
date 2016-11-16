@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 use App\Tweet;
+use App\User;
 
 class TweetController extends Controller
 {
@@ -17,7 +18,7 @@ class TweetController extends Controller
     }
 
     public function index() {
-        $tweets = Tweet::with('user')->get();
+        $tweets = Tweet::with('user')->orderBy('created_at', 'desc')->get();
         return $tweets;
     }
 
@@ -29,7 +30,7 @@ class TweetController extends Controller
         $id = Auth::id();
 
         $validator = Validator::make($request->all(),[
-            'tweet' => 'required'
+            'message' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -42,8 +43,10 @@ class TweetController extends Controller
         $tweet->message = $request->input('message');
         $tweet->save();
 
-        // return response($tweet, 201);
-        return back();
+        $user = User::findOrFail($tweet->user_id);
+        $tweet->user = $user;
+
+        return response($tweet, 201);
     }
 
     public function edit(Tweet $tweet) {

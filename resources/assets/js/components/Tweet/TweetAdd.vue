@@ -4,26 +4,24 @@
 
         data() {
             return {
-                tempTweet: {
-                    id: null,
-                    message: '',
-                    user_id: null,
-                    create_at: Date.now(),
-                    updated_at: Date.now()
-                }
+                tempTweet: { message: '' }
             }
         },
 
         methods: {
             addTweet: function() {
-                this.tweets.push(this.tempTweet)
-                this.tempTweet = {
-                    id: null,
-                    message: '',
-                    user_id: null,
-                    create_at: Date.now(),
-                    updated_at: Date.now()
+                var allTweets = this.tweets;
+                var postData = {
+                    message: this.tempTweet.message
                 }
+                this.$http.post('/api/tweet', postData).then((response) => {
+                    if ( response.status == 201 ) {
+                        allTweets.push(response.data)
+                        this.tempTweet = { message: '' }
+                    }
+                }, (response) => {
+                    console.log(response)
+                });
             }
         }
     }
@@ -39,5 +37,6 @@
                 <button type="submit" name="button" class="btn btn-primary">Tweet</button>
             </div>
         </form>
+        {{newTweet}}
     </div>
 </template>
