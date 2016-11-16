@@ -12,8 +12,6 @@ Vue.component('new-tweet-form', TweetAddForm);
 
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content');
 
-let vm = new Vue()
-
 new Vue({
     el: '#app',
 
@@ -31,10 +29,5 @@ new Vue({
         }, (response) => {
             console.log(response)
         });
-
-        vm.$on('tweet-added', function (tweets) {
-            // temp.tweets = tweets;
-            console.log(tweets)
-        })
     }
 });
