@@ -12,6 +12,12 @@ use App\User;
 class TweetController extends Controller
 {
 
+    private $id;
+
+    public function __construct() {
+        $this->id = Auth::id();
+    }
+
     public function welcome() {
         $tweets = Tweet::all();
         return view('welcome', compact('tweets'));
@@ -27,8 +33,6 @@ class TweetController extends Controller
     }
 
     public function store(Request $request) {
-        $id = Auth::id();
-
         $validator = Validator::make($request->all(),[
             'message' => 'required'
         ]);
@@ -39,7 +43,7 @@ class TweetController extends Controller
 
         // Save to our databse
         $tweet = new Tweet;
-        $tweet->user_id = $id;
+        $tweet->user_id = $this->id;
         $tweet->message = $request->input('message');
         $tweet->save();
 
@@ -53,9 +57,14 @@ class TweetController extends Controller
         return view('tweet.edit', compact('tweet'));
     }
 
-    public function destory(Tweet $tweet) {
-        $tweet->delete();
-        return back();
+    public function destroy(Tweet $tweet) {
+        // Validate if current user id is the same as tweet used id
+        if ($tweet->user_id == $this->id) {
+            $tweet->delete();
+            return response($tweet, 200);
+        } else {
+            return response($tweet, 401);
+        }
     }
 
 }
