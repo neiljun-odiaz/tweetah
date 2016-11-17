@@ -12,15 +12,27 @@ use App\User;
 class TweetController extends Controller
 {
 
-    private $id;
+    protected $id;
+    protected $user;
+    protected $signedIn;
 
     public function __construct() {
-        $this->id = Auth::id();
+
+        $this->middleware(function ($request, $next) {
+            $this->user = $this->signedIn = Auth::user();
+            $this->id = Auth::id();
+            return $next($request);
+        });
+    }
+
+    public function home() {
+        $tweets = Tweet::all();
+        return view('welcome');
     }
 
     public function welcome() {
         $tweets = Tweet::all();
-        return view('welcome', compact('tweets'));
+        return view('home', compact('tweets'));
     }
 
     public function index() {

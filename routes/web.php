@@ -1,6 +1,6 @@
 <?php
 
-Auth::loginUsingId(1);
+// Auth::loginUsingId(1);
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +13,11 @@ Auth::loginUsingId(1);
 |
 */
 
-Route::get('/', 'TweetController@welcome');
+Auth::routes();
+
+Route::get('/', 'TweetController@home');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', 'HomeController@index');
+    Route::resource('tweet','TweetController');
+});

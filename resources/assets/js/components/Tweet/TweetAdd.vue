@@ -14,7 +14,7 @@
                 var postData = {
                     message: this.tempTweet.message
                 }
-                this.$http.post('/api/tweet', postData).then((response) => {
+                this.$http.post('/tweet', postData).then((response) => {
                     if ( response.status == 201 ) {
                         allTweets.push(response.data)
                         this.tempTweet = { message: '' }

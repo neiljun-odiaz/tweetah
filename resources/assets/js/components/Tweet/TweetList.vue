@@ -15,12 +15,14 @@
         methods: {
             deleteTweet: function(tweet) {
                 var index = this.tweets.indexOf(tweet);
-                this.$http.delete('/api/tweet/'+tweet.id).then((response) => {
+                this.$http.delete('/tweet/'+tweet.id).then((response) => {
                     if ( response.status == 200 ) {
                         this.tweets.splice(index, 1);
+                    } else {
+                        alert(response.statusText);
                     }
                 }, (response) => {
-                    console.log(response)
+                    alert(response.statusText);
                 });
             }
         }

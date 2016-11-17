@@ -1,3 +1,5 @@
+// require('./bootstrap');
+
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 
@@ -22,7 +24,7 @@ new Vue({
 
     created() {
         var temp = this;
-        this.$http.get('/api/tweet').then((response) => {
+        this.$http.get('/tweet').then((response) => {
             if ( response.status == 200 ) {
                 temp.tweets = response.data
             }

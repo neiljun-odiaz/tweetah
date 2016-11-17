@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-Auth::loginUsingId(1);
+// Auth::loginUsingId(1);
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-Route::resource('tweet','TweetController');
+// Route::resource('tweet','TweetController');
