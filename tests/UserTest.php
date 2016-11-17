@@ -29,8 +29,8 @@ class UserTest extends TestCase
     public function test_logged_in_success()
     {
         $this->visit('/login')
-             ->type('neiljun_odiaz@redlemonph.com', 'email')
-             ->type('85525301231', 'password')
+             ->type('neiljun.odiaz@redlemonph.com', 'email')
+             ->type('8552530123', 'password')
              ->press('Login')
              ->seePageIs('/home');
     }
