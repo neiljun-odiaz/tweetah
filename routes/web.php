@@ -19,5 +19,9 @@ Route::get('/', 'TweetController@home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index');
+
     Route::resource('tweet','TweetController');
+
+    Route::get('profile','UserController@show');
+    Route::post('profile/update','UserController@update');
 });

@@ -10,6 +10,7 @@
             <div class="panel-body">
                 <p>{{ Auth::user()->name }}</p>
                 <p>{{ Auth::user()->email }}</p>
+                <a href="{{ url('/profile') }}">Edit Profile</a>
             </div>
         </div>
     </div>
