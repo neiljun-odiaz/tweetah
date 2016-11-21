@@ -9,6 +9,12 @@
                     return b.id - a.id
                 })
                 return tweets
+            },
+            randomGravatar: function() {
+                var random_string = Math.random().toString(36).substring(7);
+                // var gravatar = 'http://www.gravatar.com/avatar/'+random_string+'?s=50&d=identicon&r=PG';
+                var gravatar = './images/profile-pic-placeholder.jpg';
+                return gravatar;
             }
         },
 
@@ -33,10 +39,24 @@
 <template>
     <div class="tweet-list">
         <ul class="list-group">
-            <li v-for="tweet in descTweets" class="list-group-item">
-                {{ tweet.message }} - {{ tweet.user.name }} @ {{ tweet.created_at }}
-                <button class="close" title="Delete Tweet" @click="deleteTweet(tweet)">&times;</button>
+            <transition-group name="list" tag="p">
+            <li v-for="tweet in descTweets" :key="tweet" class="list-group-item Tweet">
+                <div class="Tweet__details">
+                    <div class="Tweet__userphoto">
+                        <img :src="randomGravatar" alt="" />
+                    </div>
+                    <div class="Tweet__info">
+                        <div class="Tweet__info--credits">
+                            <strong>{{ tweet.user.name }}</strong><span class="timestamp"> - {{ tweet.created_at }}</span>
+                        </div>
+                        <div class="Tweet__info--tweet">
+                            {{ tweet.message }}
+                        </div>
+                    </div>
+                </div>
+                <button class="close Tweet--delete" title="Delete Tweet" @click="deleteTweet(tweet)">&times;</button>
             </li>
+            </transition-group>
         </ul>
     </div>
 </template>

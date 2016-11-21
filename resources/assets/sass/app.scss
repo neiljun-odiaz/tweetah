@@ -4,3 +4,76 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.Profile {
+    border: 0;
+    &__cover {
+        background: url('/images/cover-photo-placeholder.jpg') center center;
+        height: 100px;
+    }
+    &__details {
+        display: flex;
+        border-left: 1px solid #d3e0e9;
+        border-right: 1px solid #d3e0e9;
+        border-bottom: 1px solid #d3e0e9;
+        padding: 8px;
+        padding-bottom: 15px;
+    }
+    &__photo {
+        border: 3px solid $white;
+        margin-top: -30px;
+        border-radius: 8px;
+        img {
+            border-radius: 8px;
+            width: 65px;
+        }
+    }
+    &__name {
+        margin: 0px 0px 0px 5px;
+        &--fullname {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        &--email {
+            font-size: 1.1rem;
+        }
+        p {
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+        }
+    }
+}
+
+
+.Tweet {
+    padding: 10px;
+    &__details {
+        display: flex;
+    }
+    &__userphoto {
+        img {
+            width: 50px;
+            border-radius: 5px;
+        }
+    }
+    &__info {
+        margin-left: 8px;
+        .timestamp {
+            color: #949494;
+        }
+    }
+    &--delete {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+    }
+}
+
+.list-enter-active, .list-leave-active {
+    transition: all 0.8s;
+}
+.list-enter, .list-leave-active {
+    opacity: 0;
+    transform: translateY(-30px);
+}

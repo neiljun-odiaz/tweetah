@@ -8,7 +8,9 @@
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.0",
     "vue": "^2.0.1",
-    "vue-resource": "^1.0.3"
+    "vue-infinite-loading": "^2.0.0-rc.3",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.0.3"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",

@@ -5765,4 +5765,62 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.Profile {
+  border: 0; }
+  .Profile__cover {
+    background: url("/images/cover-photo-placeholder.jpg") center center;
+    height: 100px; }
+  .Profile__details {
+    display: -webkit-box;
+    display: flex;
+    border-left: 1px solid #d3e0e9;
+    border-right: 1px solid #d3e0e9;
+    border-bottom: 1px solid #d3e0e9;
+    padding: 8px;
+    padding-bottom: 15px; }
+  .Profile__photo {
+    border: 3px solid #FFF;
+    margin-top: -30px;
+    border-radius: 8px; }
+    .Profile__photo img {
+      border-radius: 8px;
+      width: 65px; }
+  .Profile__name {
+    margin: 0px 0px 0px 5px; }
+    .Profile__name--fullname {
+      font-weight: bold;
+      font-size: 1.5rem; }
+    .Profile__name--email {
+      font-size: 1.1rem; }
+    .Profile__name p {
+      margin: 0;
+      padding: 0;
+      line-height: 1.4; }
+
+.Tweet {
+  padding: 10px; }
+  .Tweet__details {
+    display: -webkit-box;
+    display: flex; }
+  .Tweet__userphoto img {
+    width: 50px;
+    border-radius: 5px; }
+  .Tweet__info {
+    margin-left: 8px; }
+    .Tweet__info .timestamp {
+      color: #949494; }
+  .Tweet--delete {
+    position: absolute;
+    top: 5px;
+    right: 8px; }
+
+.list-enter-active, .list-leave-active {
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s; }
+
+.list-enter, .list-leave-active {
+  opacity: 0;
+  -webkit-transform: translateY(-30px);
+  transform: translateY(-30px); }
+
 /*# sourceMappingURL=app.css.map */

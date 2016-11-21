@@ -3,14 +3,16 @@
 @section('content')
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Personal Info</h3>
-            </div>
-            <div class="panel-body">
-                <p>{{ Auth::user()->name }}</p>
-                <p>{{ Auth::user()->email }}</p>
-                <a href="{{ url('/profile') }}">Edit Profile</a>
+        <div class="panel panel-default Profile">
+            <div class="panel-heading Profile__cover"></div>
+            <div class="panel-body Profile__details">
+                <div class="Profile__photo">
+                    <img src="/images/profile-pic-placeholder.jpg" alt="" />
+                </div>
+                <div class="Profile__name">
+                    <p class="Profile__name--fullname"><a href="{{ url('/profile') }}">{{ Auth::user()->name }}</a></p>
+                    <p class="Profile__name--email">{{ Auth::user()->email }}</p>
+                </div>
             </div>
         </div>
     </div>
