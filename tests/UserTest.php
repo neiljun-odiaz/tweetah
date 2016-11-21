@@ -30,7 +30,7 @@ class UserTest extends TestCase
     {
         $this->visit('/login')
              ->type('neiljun.odiaz@redlemonph.com', 'email')
-             ->type('8552530123', 'password')
+             ->type('85525301231', 'password')
              ->press('Login')
              ->seePageIs('/home');
     }
@@ -44,5 +44,16 @@ class UserTest extends TestCase
              ->type('85525301231', 'password_confirmation')
              ->press('Register')
              ->see('Just Another Dope');
+    }
+
+    public function test_should_see_users_profile()
+    {
+        $user = App\User::first();
+        $this->be($user);
+
+        $user_name = $user->name;
+
+        $this->visit('/profile')
+             ->see($user_name);
     }
 }

@@ -24,10 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            return redirect('home');
-        } else {
-            return view('home');
-        }
+        return view('home');
     }
 }

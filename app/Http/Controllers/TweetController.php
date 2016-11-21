@@ -26,8 +26,11 @@ class TweetController extends Controller
     }
 
     public function home() {
-        $tweets = Tweet::all();
-        return view('welcome');
+        if (Auth::check()) {
+            return redirect('/home');
+        } else {
+            return view('welcome');
+        }
     }
 
     public function welcome() {
